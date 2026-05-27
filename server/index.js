@@ -8,7 +8,7 @@ import accountRoute from "./routes/account.route.js";
 import transactionRoute from "./routes/transaction.route.js";
 import path from "path";
 
-dotenv.config();
+dotenv.config({ path: new URL('.env', import.meta.url).pathname });
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,6 +21,7 @@ app.use(cors({
   origin: (origin, callback) => {
     const allowed = [
       process.env.CLIENT_URL,
+      'https://crestpay.onrender.com',
       'http://localhost:5173',
       'http://localhost:5174',
       'http://localhost:5175',
